@@ -154,17 +154,33 @@
         </div>
       </div>
     </section>
+<!-- TESTED EQUIPMENT & BRANDS -->
+    <section id="tested-brands" class="section-shell section-pad">
+      <div class="container">
+        <div class="section-heading reveal">
+          <p class="eyebrow">02B — FIELD EQUIPMENT REFERENCE</p>
+          <h2>Tested Equipment & <span class="gradient-text">Brands.</span></h2>
+          <p class="section-intro">Select a category below or click a tag in my experience to view equipment brands and test scope.</p>
+        </div>
 
+        <!-- Category Tabs -->
+        <div class="equip-tabs" role="tablist" aria-label="Equipment categories">
+          <button type="button" class="equip-tab active" data-target="transformers">Transformer Testing</button>
+          <button type="button" class="equip-tab" data-target="switchgear">MV / LV Switchgear</button>
+          <button type="button" class="equip-tab" data-target="relays">Protection Relays</button>
+          <button type="button" class="equip-tab" data-target="commissioning">Commissioning</button>
+        </div>
 
-<section id="tested-brands" class="section-shell section-pad">
-  <div class="container">
-    <p class="eyebrow">TESTED EQUIPMENT &amp; BRANDS</p>
-    <h2 id="brands-heading">Transformer Testing</h2>
-    <ul id="brands-list" class="detail-list">
-      <li>Add transformer brands you have tested here</li>
-    </ul>
-  </div>
-</section>
+        <!-- Dynamic Category Summary & Brand Cards Grid -->
+        <div class="equip-showcase">
+          <div class="equip-header">
+            <h3 id="equip-title">Power & Distribution Transformers</h3>
+            <p id="equip-desc" class="body-copy mb-0">Insulation resistance, winding resistance, turns ratio (TTR), power factor, short-circuit/impedance, no-load loss, and excitation tests.</p>
+          </div>
+          <div id="equip-grid" class="row g-3 mt-1"></div>
+        </div>
+      </div>
+    </section>
 
     <!-- EDUCATION / PROJECT -->
     <section id="education" class="section-shell section-pad">
@@ -285,37 +301,86 @@
   <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
   <script src="script.js"></script>
-  <script>
-  const equipmentBrands = {
+ <script>
+  const equipmentData = {
     transformers: {
-      title: "Transformer Testing — Equipment & Brands",
-      brands: ["Brand 1", "Brand 2", "Brand 3"]
+      title: "Power & Distribution Transformers",
+      desc: "Insulation resistance, winding resistance, transformer turns ratio (TTR), insulation power factor, short-circuit/impedance, no-load loss, and excitation tests.",
+      items: [
+        { tag: "Power & Distribution", brand: "ABB / Hitachi Energy", note: "Oil-immersed & dry-type transformers — TTR, winding resistance, and insulation testing." },
+        { tag: "Power Transformers", brand: "Siemens", note: "Routine & commissioning electrical tests, excitation current, and core/winding checks." },
+        { tag: "Distribution Units", brand: "Schneider Electric", note: "Cast-resin & pad-mounted transformer testing and pre-commissioning verification." },
+        { tag: "Local / Industrial", brand: "First Philec / Custom Units", note: "Load loss, impedance verification, and acceptance test documentation." }
+      ]
     },
     switchgear: {
-      title: "MV / LV Switchgear — Equipment & Brands",
-      brands: ["Brand 1", "Brand 2", "Brand 3"]
+      title: "MV / LV Switchgear & Circuit Breakers",
+      desc: "Insulation resistance, contact resistance (DLRO), breaker timing/trip testing, and interlock verification for medium- and low-voltage switchgear.",
+      items: [
+        { tag: "MV / LV Switchgear", brand: "Schneider Electric", note: "MasterPact, BlokSeT, SM6 & PIX switchgear insulation, contact resistance, and trip tests." },
+        { tag: "Air & Vacuum Breakers", brand: "ABB", note: "Emax / VD4 breaker contact resistance, mechanical operation, and protection trip checks." },
+        { tag: "Switchgear Assemblies", brand: "Siemens", note: "SIVACON & NXAIR switchgear busbar insulation and functional control verification." },
+        { tag: "LV Distribution", brand: "Eaton / Terasaki", note: "MCCB/ACB primary injection, contact resistance, and trip unit verification." }
+      ]
     },
     relays: {
-      title: "Protection Relays — Equipment & Brands",
-      brands: ["Brand 1", "Brand 2", "Brand 3"]
+      title: "Protection Relays & Settings Verification",
+      desc: "Secondary injection testing, overcurrent/earth-fault curve verification, settings audit, and trip/alarm logic checks.",
+      items: [
+        { tag: "Numerical Relays", brand: "SEL (Schweitzer)", note: "Overcurrent (50/51), earth fault (50N/51N), and trip logic verification." },
+        { tag: "Feeder & Transformer", brand: "ABB Relion", note: "REF / RET series settings verification, secondary injection, and binary I/O checks." },
+        { tag: "Protection Systems", brand: "Siemens SIPROTEC", note: "Characteristic curve testing, pickup/dropout timing, and breaker failure logic." },
+        { tag: "MV Protection", brand: "Schneider Sepam / Easergy", note: "Protection parameterization, CT/VT circuit checks, and trip circuit supervision." }
+      ]
     },
     commissioning: {
-      title: "Commissioning — Equipment & Brands",
-      brands: ["Brand 1", "Brand 2", "Brand 3"]
+      title: "Testing & Commissioning Scope",
+      desc: "End-to-end site acceptance testing, power quality measurements, preventive maintenance, and formal commissioning reports.",
+      items: [
+        { tag: "Cable & Insulation", brand: "XLPE MV/LV Cables", note: "VLF / insulation resistance testing and termination inspection prior to energization." },
+        { tag: "Power Quality", brand: "Power Quality Analyzers", note: "Harmonics, voltage unbalance, load profiling, and transient measurements." },
+        { tag: "Software & Tools", brand: "PowerDB / PXPM / EKip", note: "Digital test data logging, breaker/relay configuration, and curve analysis." },
+        { tag: "Documentation", brand: "NETA ATS/MTS & PEC", note: "Method statements, inspection checklists, and signed commissioning test reports." }
+      ]
     }
   };
 
-  document.querySelectorAll(".equipment-link").forEach((link) => {
-    link.addEventListener("click", () => {
-      const key = link.dataset.equipment;
-      const data = equipmentBrands[key];
-      if (!data) return;
+  function renderEquipmentCategory(key) {
+    const data = equipmentData[key];
+    if (!data) return;
 
-      document.getElementById("brands-heading").textContent = data.title;
-      document.getElementById("brands-list").innerHTML = data.brands
-        .map((brand) => `<li>${brand}</li>`)
-        .join("");
+    document.getElementById("equip-title").textContent = data.title;
+    document.getElementById("equip-desc").textContent = data.desc;
+
+    document.getElementById("equip-grid").innerHTML = data.items
+      .map(
+        (item) => `
+        <div class="col-md-6">
+          <div class="brand-card">
+            <span class="brand-badge">${item.tag}</span>
+            <h4>${item.brand}</h4>
+            <p>${item.note}</p>
+          </div>
+        </div>`
+      )
+      .join("");
+
+    document.querySelectorAll(".equip-tab").forEach((tab) => {
+      tab.classList.toggle("active", tab.dataset.target === key);
     });
+  }
+
+  // Load default category on page load
+  renderEquipmentCategory("transformers");
+
+  // Handle tab clicks inside the section
+  document.querySelectorAll(".equip-tab").forEach((tab) => {
+    tab.addEventListener("click", () => renderEquipmentCategory(tab.dataset.target));
+  });
+
+  // Handle clicks from the Experience tags
+  document.querySelectorAll(".equipment-link").forEach((link) => {
+    link.addEventListener("click", () => renderEquipmentCategory(link.dataset.equipment));
   });
 </script>
 </body>
