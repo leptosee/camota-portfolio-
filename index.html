@@ -285,5 +285,38 @@
   <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
   <script src="script.js"></script>
+  <script>
+  const equipmentBrands = {
+    transformers: {
+      title: "Transformer Testing — Equipment & Brands",
+      brands: ["Brand 1", "Brand 2", "Brand 3"]
+    },
+    switchgear: {
+      title: "MV / LV Switchgear — Equipment & Brands",
+      brands: ["Brand 1", "Brand 2", "Brand 3"]
+    },
+    relays: {
+      title: "Protection Relays — Equipment & Brands",
+      brands: ["Brand 1", "Brand 2", "Brand 3"]
+    },
+    commissioning: {
+      title: "Commissioning — Equipment & Brands",
+      brands: ["Brand 1", "Brand 2", "Brand 3"]
+    }
+  };
+
+  document.querySelectorAll(".equipment-link").forEach((link) => {
+    link.addEventListener("click", () => {
+      const key = link.dataset.equipment;
+      const data = equipmentBrands[key];
+      if (!data) return;
+
+      document.getElementById("brands-heading").textContent = data.title;
+      document.getElementById("brands-list").innerHTML = data.brands
+        .map((brand) => `<li>${brand}</li>`)
+        .join("");
+    });
+  });
+</script>
 </body>
 </html>
