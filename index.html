@@ -305,7 +305,7 @@
   const equipmentData = {
     transformers: {
       title: "Power & Distribution Transformers",
-      desc: "Insulation Resistance, Winding Resistance, Transformer Turns Ratio (TTR), Insulation Power Factor, Short-circuit / Impedance Test, No-load Loss, and Excitation tests, Sweep Frequency Response Analysis (SFRA), Grounding Resistance Test.",
+      desc: "Insulation Resistance, Winding Resistance, Transformer Turns Ratio (TTR), Insulation Power Factor, Short-circuit / Impedance Test, No-load Loss, Excitation tests, Sweep Frequency Response Analysis (SFRA), and Grounding Resistance Test.",
       items: [
         { tag: "Power Transformers", brand: "ABB / Hitachi Energy", note: "Oil-immersed & dry-type transformers" },
         { tag: "Power Transformers", brand: "Eaton", note: "Oil-immersed & dry-type transformers" },
@@ -343,10 +343,26 @@
       title: "Protection Relays & Settings Verification",
       desc: "Secondary injection testing, overcurrent/earth-fault curve verification, settings audit, and trip/alarm logic checks.",
       items: [
-        { tag: "Numerical Relays", brand: "SEL (Schweitzer)", note: "Overcurrent (50/51), earth fault (50N/51N), and trip logic verification." },
-        { tag: "Feeder & Transformer", brand: "ABB Relion", note: "REF / RET series settings verification, secondary injection, and binary I/O checks." },
-        { tag: "Protection Systems", brand: "Siemens SIPROTEC", note: "Characteristic curve testing, pickup/dropout timing, and breaker failure logic." },
-        { tag: "MV Protection", brand: "Schneider Sepam / Easergy", note: "Protection parameterization, CT/VT circuit checks, and trip circuit supervision." }
+        { 
+          tag: "Numerical Relays", 
+          brand: "SEL (Schweitzer)", 
+          note: "Overcurrent (50/51), earth fault (50N/51N), and trip logic verification." 
+        },
+        { 
+          tag: "Feeder & Transformer", 
+          brand: "ABB Relion", 
+          note: "REF / RET series settings verification, secondary injection, and binary I/O checks." 
+        },
+        { 
+          tag: "Protection Systems", 
+          brand: "Siemens SIPROTEC", 
+          note: "Characteristic curve testing, pickup/dropout timing, and breaker failure logic." 
+        },
+        { 
+          tag: "MV Protection", 
+          brand: "Schneider Sepam / Easergy", 
+          note: "Protection parameterization, CT/VT circuit checks, and trip circuit supervision." 
+        }
       ]
     },
     commissioning: {
