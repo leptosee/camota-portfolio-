@@ -216,7 +216,7 @@ a { color: inherit; text-decoration: none; }
 }
 @media (max-width: 575.98px) {
   .logo-ekip { top: -8%; left: 42%; }
-  .tag-top-left { top: 15%; left: -4%; }
+  .tag-top-left { top: 12%; left: -8%; }
   .tag-top { top: 18%; right: -8%; }
   .logo-autocad { top: 44%; left: -3%; }
   .logo-powerdb { top: 46%; right: -3%; }
