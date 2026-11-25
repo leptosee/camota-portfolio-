@@ -63,7 +63,7 @@ a { color: inherit; text-decoration: none; }
 .orbit-a { width: 85%; height: 56%; top: 20%; }
 .orbit-b { width: 102%; height: 67%; top: 15%; transform: rotate(30deg); border-color: rgba(66,224,192,.1); }
 .floating-tag { position: absolute; z-index: 2; background: rgba(20,32,34,.9); border: 1px solid rgba(66,224,192,.23); color: #d9e9e5; padding: 11px 14px; font-size: .65rem; font-weight: 700; box-shadow: 0 12px 35px rgba(0,0,0,.22); backdrop-filter: blur(12px); }
-.tag-top { top: 15%; right: -10%; animation: tagFloat 5s ease-in-out infinite; }
+.tag-top { top: 15%; right: -30%; animation: tagFloat 5s ease-in-out infinite; }
 .tag-bottom { bottom: 16%; left: -7%; animation: tagFloat 6s ease-in-out infinite reverse; }
 .tag-top-left { top: 20%; left: -2%; animation: tagFloat 4.5s ease-in-out infinite; } 
 .tag-bottom-right { bottom: 14%; right: -10%; animation: tagFloat 5.5s ease-in-out infinite reverse; } 
