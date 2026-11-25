@@ -143,6 +143,8 @@ a { color: inherit; text-decoration: none; }
 .contact-copy { color: var(--muted); max-width: 570px; font-size: .9rem; line-height: 1.9; margin: 23px 0 28px; }
 .contact-actions { display: flex; align-items: center; gap: 25px; }
 .contact-phone { color: #d4e0dc; font-family: var(--mono); font-size: .72rem; }
+.contact-phone, .contact-link { color: #d4e0dc; font-family: var(--mono); font-size: .72rem; }
+.contact-link:hover { color: var(--teal); }
 .contact-location { font-family: var(--mono); font-size: .57rem; letter-spacing: .13em; color: #71847e; margin-top: 60px; }
 .site-footer { border-top: 1px solid var(--line); padding: 23px 0; color: #73827e; font-family: var(--mono); font-size: .58rem; letter-spacing: .04em; }
 .site-footer b { color: var(--teal); margin: 0 4px; }
